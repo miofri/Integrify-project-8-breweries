@@ -10,10 +10,32 @@ import axios from "axios";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import { List, ListItem, ListItemButton, Menu, MenuItem } from "@mui/material";
+import { List, ListItemButton, Pagination } from "@mui/material";
 import { Breweries } from "./interfaces/breweries";
 
-const Home = ({ breweries }: any) => {
+const Home = () => {
+  const [page, setPage] = useState(1);
+  const [breweries, setBreweries] = useState([]);
+
+  useEffect(() => {
+    const dataGet = async () => {
+      const data = await axios
+        .get(
+          `https://api.openbrewerydb.org/v1/breweries?page=${page}&per_page=22`
+        )
+        .then((response) => response.data)
+        .catch((err) => {
+          throw new Error("Axios get failed!");
+        });
+      return setBreweries(data);
+    };
+    dataGet();
+  }, [page]);
+
+  const handleChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    setPage(page);
+  };
+
   return (
     <Container maxWidth="sm">
       <Box sx={{ bgcolor: "#ebebeb" }}>
@@ -25,6 +47,12 @@ const Home = ({ breweries }: any) => {
             </Link>
           ))}
         </List>
+        <Pagination
+          count={373}
+          variant="outlined"
+          color="primary"
+          onChange={handleChange}
+        />
       </Box>
     </Container>
   );
@@ -54,7 +82,17 @@ const SingleBrewery = () => {
     };
     finalData(id);
   }, [id]);
-  if (loading) return <div>Loading data...</div>;
+  if (loading)
+    return (
+      <Container
+        maxWidth="sm"
+        style={{
+          background: "#ebebeb",
+        }}
+      >
+        <Box>Loading data...</Box>
+      </Container>
+    );
   else if (data.length > 0) {
     const brewery = data[0];
     return (
@@ -90,27 +128,27 @@ const SingleBrewery = () => {
 };
 
 export const App = () => {
-  const [breweries, setBreweries] = useState([]);
+  // const [breweries, setBreweries] = useState([]);
 
-  useEffect(() => {
-    const dataGet = async () => {
-      const data = await axios
-        .get("https://api.openbrewerydb.org/v1/breweries")
-        .then((response) => response.data)
-        .catch((err) => {
-          throw new Error("Axios get failed!");
-        });
-      return setBreweries(data);
-    };
-    dataGet();
-  }, []);
+  // useEffect(() => {
+  //   const dataGet = async () => {
+  //     const data = await axios
+  //       .get("https://api.openbrewerydb.org/v1/breweries")
+  //       .then((response) => response.data)
+  //       .catch((err) => {
+  //         throw new Error("Axios get failed!");
+  //       });
+  //     return setBreweries(data);
+  //   };
+  //   dataGet();
+  // }, []);
 
   return (
     <Router>
       <Routes>
         <Route path="/">
-          <Route index element={<Home breweries={breweries} />}></Route>
-          <Route path="/brewery/:id" element={<SingleBrewery />}></Route>
+          <Route index element={<Home />}></Route>
+          <Route path="brewery/:id" element={<SingleBrewery />}></Route>
         </Route>
       </Routes>
     </Router>
