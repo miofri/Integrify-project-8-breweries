@@ -1,22 +1,17 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { Breweries } from "../interfaces/breweries";
 
-import { mainTheme } from "../themes/mainTheme";
+import { ContainerStyle, mainTheme } from "../themes/mainTheme";
 
 export const SingleBrewery = () => {
   const [data, setData] = useState<Breweries[]>([]);
   const [loading, setLoading] = useState(true);
-  const [menuState, setMenuState] = useState(false);
-
   const id = useParams().id;
-  const handleClick = () => {
-    setMenuState(!menuState);
-  };
 
   useEffect(() => {
     const finalData = async (id: string | undefined) => {
@@ -32,6 +27,7 @@ export const SingleBrewery = () => {
     };
     finalData(id);
   }, [id]);
+
   if (loading)
     return (
       <Container maxWidth="sm">
@@ -41,15 +37,7 @@ export const SingleBrewery = () => {
   else if (data.length > 0) {
     const brewery = data[0];
     return (
-      <Container
-        maxWidth="sm"
-        sx={{
-          backgroundColor: mainTheme.palette.background.default,
-          mt: "1rem",
-          borderRadius: "2rem",
-          py: "1rem",
-        }}
-      >
+      <ContainerStyle maxWidth="sm" sx={{}}>
         <Box sx={{ color: mainTheme.palette.text.primary }}>
           <h2 style={{ color: mainTheme.palette.primary.main }}>
             {brewery.name}
@@ -74,11 +62,27 @@ export const SingleBrewery = () => {
           </p>
           <p>State: {brewery.state}</p>
           <p>Street: {brewery.street}</p>
-          <Button variant="outlined" href="/" sx={{ my: "1rem" }}>
-            Back to list
-          </Button>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "1rem",
+              py: "1rem",
+            }}
+          >
+            <Button variant="outlined" href="/" sx={{ my: "1rem" }}>
+              Back to list
+            </Button>
+            <Button
+              variant="outlined"
+              href="/search-brewery"
+              sx={{ my: "1rem" }}
+            >
+              Back to search
+            </Button>
+          </Box>
         </Box>
-      </Container>
+      </ContainerStyle>
     );
   } else return <div>Brewery not found!</div>;
 };
