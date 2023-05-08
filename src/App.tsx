@@ -8,17 +8,19 @@ import { SearchBrewery } from "./components/SearchBrewery";
 
 export const App = () => {
   return (
-    <ThemeProvider theme={mainTheme}>
-      <Router>
-        <Routes>
-          <Route path="/">
-            <Route index element={<Home />}></Route>
-            <Route path="brewery/:id" element={<SingleBrewery />}></Route>
-            <Route path="search-brewery" element={<SearchBrewery />}></Route>
-          </Route>
-        </Routes>
-      </Router>
-    </ThemeProvider>
+    <div>
+      <ThemeProvider theme={mainTheme}>
+        <Router>
+          <Routes>
+            <Route path="/">
+              <Route index element={<Home />}></Route>
+              <Route path="brewery/:id" element={<SingleBrewery />}></Route>
+              <Route path="search-brewery" element={<SearchBrewery />}></Route>
+            </Route>
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </div>
   );
 };
 
