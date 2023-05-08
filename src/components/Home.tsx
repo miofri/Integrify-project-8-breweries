@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import { Button, List, ListItemButton, Pagination } from "@mui/material";
+import { Button, Pagination } from "@mui/material";
 
 import { ContainerStyle, mainTheme } from "../themes/mainTheme";
-import { Link } from "react-router-dom";
 import { BreweryList } from "./BreweryList";
 
 export const Home = () => {
