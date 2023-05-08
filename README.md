@@ -1,25 +1,22 @@
+
 # Breweries App
 
-Fetch, display, and search for brewery companies from the given API endpoint, using React and TypeScript
+Live at https://integrify-project-8-breweries-git-main-miofri.vercel.app
+Objective: Fetch, display, and search for brewery companies from the given API endpoint, using React and TypeScript
 
-## Requirements
+## Directories:
+- ./src/App.tsx - the main app
+- ./src/components/ - contains all components used in App.tsx
+- ./src/interfaces/ - contains interfaces and types
+- ./src/themes/ - contains ThemeOptions and styled() for MUI
 
-1. Check the documentation at [https://www.openbrewerydb.org/documentation](https://www.openbrewerydb.org/documentation) Fetch and display information of all the companies.
+## Implemented from requirement:
+1. Have proper display and routing that user can switch to/back from specific company's detailed page
 
-2. Have proper display and routing that user can switch to/back from specific company's detailed page
+2. Create search component to enable user to input text and search for companies by name.
 
-3. Create search component to enable user to input text and search for companies by name.
+3. Use MaterialUI to make your design more appealing and responsive
 
-4. Use MaterialUI to make your design more appealing and responsive
+4. Deploy your application and rewrite README file
 
-5. Implement performance optimization where applicable
-
-6. Deploy your application and rewrite README file
-
-## Optional
-
-7. Use the queries listed in the documentation to sort and limit the returned data and build pagination feature.
-
-8. Create a contact form so that user can send question along with their contact information. 
-
-9. Use Google-login option to pre-fill the contact form for user.
+5. Use the queries listed in the documentation to sort and limit the returned data and build pagination feature.
