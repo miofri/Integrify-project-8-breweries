@@ -7,7 +7,7 @@ import {
   ContainerStyle,
   ButtonGroupContainer,
 } from "../themes/mainTheme";
-import { Breweries } from "../interfaces/breweries";
+import { Breweries } from "../interfaces/Breweries";
 import { BreweryList } from "./BreweryList";
 
 export const SearchBrewery = () => {

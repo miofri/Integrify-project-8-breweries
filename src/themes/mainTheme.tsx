@@ -32,6 +32,7 @@ export const ContainerStyle = styled(Container)({
   marginTop: "1rem",
   borderRadius: "2rem",
   padding: "1rem",
+  width: "600px",
   maxWidth: "600px",
 });
 

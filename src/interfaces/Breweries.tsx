@@ -3,8 +3,8 @@ export interface Breweries {
   name: string;
   brewery_type: string;
   address_1: string;
-  address_2: null;
-  address_3: null;
+  address_2?: string;
+  address_3?: string;
   city: string;
   state_province: string;
   postal_code: string;

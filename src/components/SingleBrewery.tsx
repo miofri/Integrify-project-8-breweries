@@ -4,8 +4,8 @@ import axios from "axios";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import { Breweries } from "../interfaces/breweries";
 
+import { Breweries } from "../interfaces/Breweries";
 import {
   ButtonGroupContainer,
   ContainerStyle,
@@ -20,14 +20,11 @@ export const SingleBrewery = () => {
 
   useEffect(() => {
     const finalData = async (id: string | undefined) => {
-      const response = await axios
-        .get(`https://api.openbrewerydb.org/v1/breweries/${id}`)
-        .then((response) => response.data)
-        .catch((err) => {
-          throw new Error("Axios get failed!");
-        });
-
-      setData([response]);
+      const response = await axios.get(
+        `https://api.openbrewerydb.org/v1/breweries/${id}`
+      );
+      const finalData = response.data;
+      setData([finalData]);
       setLoading(false);
     };
     finalData(id);
