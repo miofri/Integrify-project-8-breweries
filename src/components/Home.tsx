@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Box from "@mui/material/Box";
-import { Button, Pagination } from "@mui/material";
+import { Button, Fade, Pagination } from "@mui/material";
+import { TransitionGroup } from "react-transition-group";
 
 import {
   ButtonGroupContainer,
@@ -36,31 +37,33 @@ export const Home = () => {
   return (
     <>
       <ContainerStyle>
-        <Box>
-          <h1 style={{ color: mainTheme.palette.primary.main }}>
-            Brewery list
-          </h1>
-          <BreweryList breweries={breweries} />
-          <ButtonGroupContainer>
-            <Button
-              variant="outlined"
-              sx={{
-                color: mainTheme.palette.primary.main,
-              }}
-              href="/search-brewery"
-            >
-              Search brewery
-            </Button>
-          </ButtonGroupContainer>
-        </Box>
-        <ButtonGroupContainer>
-          <Pagination
-            count={410}
-            variant="outlined"
-            color="primary"
-            onChange={handleChange}
-          />
-        </ButtonGroupContainer>
+        <Fade in={true}>
+          <Box>
+            <h1 style={{ color: mainTheme.palette.primary.main }}>
+              Brewery list
+            </h1>
+            <BreweryList breweries={breweries} />
+            <ButtonGroupContainer>
+              <Button
+                variant="outlined"
+                sx={{
+                  color: mainTheme.palette.primary.main,
+                }}
+                href="/search-brewery"
+              >
+                Search brewery
+              </Button>
+            </ButtonGroupContainer>
+            <ButtonGroupContainer>
+              <Pagination
+                count={410}
+                variant="outlined"
+                color="primary"
+                onChange={handleChange}
+              />
+            </ButtonGroupContainer>
+          </Box>
+        </Fade>
       </ContainerStyle>
     </>
   );

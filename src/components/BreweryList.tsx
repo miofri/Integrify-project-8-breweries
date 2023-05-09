@@ -1,4 +1,4 @@
-import { List, ListItemButton } from "@mui/material";
+import { Fade, List, ListItemButton } from "@mui/material";
 
 import { mainTheme } from "../themes/mainTheme";
 import { BreweryProp } from "../interfaces/breweries";
@@ -13,14 +13,16 @@ export const BreweryList = ({ breweries }: BreweryProp) => {
           to={`/brewery/${data.id}`}
           style={{ textDecoration: "none" }}
         >
-          <ListItemButton
-            sx={{
-              color: mainTheme.palette.text.primary,
-              paddingLeft: 0,
-            }}
-          >
-            {data.name}
-          </ListItemButton>
+          <Fade in={true}>
+            <ListItemButton
+              sx={{
+                color: mainTheme.palette.text.primary,
+                paddingLeft: 0,
+              }}
+            >
+              {data.name}
+            </ListItemButton>
+          </Fade>
         </Link>
       ))}
     </List>
