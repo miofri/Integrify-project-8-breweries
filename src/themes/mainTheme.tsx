@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { ThemeOptions, createTheme } from "@mui/material/styles";
 import { styled } from "@mui/system";
 
@@ -32,4 +32,12 @@ export const ContainerStyle = styled(Container)({
   marginTop: "1rem",
   borderRadius: "2rem",
   padding: "1rem",
+  maxWidth: "600px",
+});
+
+export const ButtonGroupContainer = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  gap: "1rem",
+  paddingTop: "0.8rem",
 });

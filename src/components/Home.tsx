@@ -3,7 +3,11 @@ import axios from "axios";
 import Box from "@mui/material/Box";
 import { Button, Pagination } from "@mui/material";
 
-import { ContainerStyle, mainTheme } from "../themes/mainTheme";
+import {
+  ButtonGroupContainer,
+  ContainerStyle,
+  mainTheme,
+} from "../themes/mainTheme";
 import { BreweryList } from "./BreweryList";
 
 export const Home = () => {
@@ -23,7 +27,7 @@ export const Home = () => {
       return setBreweries(data);
     };
     dataGet();
-  }, [page]);
+  });
 
   const handleChange = (event: React.ChangeEvent<unknown>, page: number) => {
     setPage(page);
@@ -31,45 +35,32 @@ export const Home = () => {
 
   return (
     <>
-      <ContainerStyle maxWidth="sm">
+      <ContainerStyle>
         <Box>
           <h1 style={{ color: mainTheme.palette.primary.main }}>
             Brewery list
           </h1>
           <BreweryList breweries={breweries} />
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              py: "1rem",
-            }}
-          >
+          <ButtonGroupContainer>
             <Button
               variant="outlined"
               sx={{
                 color: mainTheme.palette.primary.main,
-                alignSelf: "flex-end",
               }}
               href="/search-brewery"
             >
               Search brewery
             </Button>
-          </Box>
+          </ButtonGroupContainer>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            py: "1rem",
-          }}
-        >
+        <ButtonGroupContainer>
           <Pagination
             count={410}
             variant="outlined"
             color="primary"
             onChange={handleChange}
           />
-        </Box>
+        </ButtonGroupContainer>
       </ContainerStyle>
     </>
   );

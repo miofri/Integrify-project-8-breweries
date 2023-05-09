@@ -6,7 +6,11 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { Breweries } from "../interfaces/breweries";
 
-import { ContainerStyle, mainTheme } from "../themes/mainTheme";
+import {
+  ButtonGroupContainer,
+  ContainerStyle,
+  mainTheme,
+} from "../themes/mainTheme";
 
 export const SingleBrewery = () => {
   const [data, setData] = useState<Breweries[]>([]);
@@ -30,15 +34,15 @@ export const SingleBrewery = () => {
 
   if (loading)
     return (
-      <Container maxWidth="sm">
-        <Box>Loading data...</Box>
-      </Container>
+      <ContainerStyle>
+        <Box textAlign={"center"}>Loading data...</Box>
+      </ContainerStyle>
     );
   else if (data.length > 0) {
     const brewery = data[0];
     return (
-      <ContainerStyle maxWidth="sm" sx={{}}>
-        <Box sx={{ color: mainTheme.palette.text.primary }}>
+      <ContainerStyle>
+        <Box>
           <h2 style={{ color: mainTheme.palette.primary.main }}>
             {brewery.name}
           </h2>
@@ -62,14 +66,7 @@ export const SingleBrewery = () => {
           </p>
           <p>State: {brewery.state}</p>
           <p>Street: {brewery.street}</p>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "1rem",
-              py: "1rem",
-            }}
-          >
+          <ButtonGroupContainer>
             <Button variant="outlined" href="/" sx={{ my: "1rem" }}>
               Back to list
             </Button>
@@ -80,7 +77,7 @@ export const SingleBrewery = () => {
             >
               Back to search
             </Button>
-          </Box>
+          </ButtonGroupContainer>
         </Box>
       </ContainerStyle>
     );

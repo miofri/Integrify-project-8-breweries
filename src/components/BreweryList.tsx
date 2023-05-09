@@ -16,6 +16,7 @@ export const BreweryList = ({ breweries }: BreweryProp) => {
           <ListItemButton
             sx={{
               color: mainTheme.palette.text.primary,
+              paddingLeft: 0,
             }}
           >
             {data.name}

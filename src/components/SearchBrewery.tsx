@@ -2,7 +2,11 @@ import { Box, Button, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { mainTheme, ContainerStyle } from "../themes/mainTheme";
+import {
+  mainTheme,
+  ContainerStyle,
+  ButtonGroupContainer,
+} from "../themes/mainTheme";
 import { Breweries } from "../interfaces/breweries";
 import { BreweryList } from "./BreweryList";
 
@@ -39,7 +43,7 @@ export const SearchBrewery = () => {
   }, [toggle]);
 
   return (
-    <ContainerStyle maxWidth="sm">
+    <ContainerStyle>
       <Box>
         <h2 style={{ color: mainTheme.palette.primary.main }}>
           Search brewery
@@ -51,9 +55,14 @@ export const SearchBrewery = () => {
           onChange={handleChange}
           sx={{ width: "100%" }}
         />
-        <Button onClick={handleClick} variant="outlined" sx={{ my: "1rem" }}>
-          Search
-        </Button>
+        <ButtonGroupContainer>
+          <Button onClick={handleClick} variant="outlined" sx={{ my: "1rem" }}>
+            Search
+          </Button>
+          <Button href="/" variant="outlined" sx={{ my: "1rem" }}>
+            Back to list
+          </Button>
+        </ButtonGroupContainer>
       </Box>
       <Box>
         <BreweryList breweries={breweries} />
