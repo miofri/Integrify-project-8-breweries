@@ -1,7 +1,7 @@
 import { Fade, List, ListItemButton } from "@mui/material";
 
 import { mainTheme } from "../themes/mainTheme";
-import { BreweryProp } from "../interfaces/Breweries";
+import { BreweryProp } from "../interfaces/BreweryProp";
 import { Link } from "react-router-dom";
 
 export const BreweryList = ({ breweries }: BreweryProp) => {

@@ -16,7 +16,3 @@ export interface Breweries {
   state: string;
   street: string;
 }
-
-export interface BreweryProp {
-  breweries: Breweries[];
-}

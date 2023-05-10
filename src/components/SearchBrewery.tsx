@@ -27,17 +27,13 @@ export const SearchBrewery = () => {
 
   useEffect(() => {
     const getMatchingBrewery = async () => {
-      const data = await axios
-        .get(
-          `https://api.openbrewerydb.org/v1/breweries/search?query=${searchTerm}`
-        )
-        .then((response) => response.data)
-        .catch((err) => {
-          throw new Error("fetching data failed!");
-        });
-      console.log(data);
+      const data = await axios.get(
+        `https://api.openbrewerydb.org/v1/breweries/search?query=${searchTerm}`
+      );
+      const finalData = data.data;
+      console.log(finalData);
 
-      return setBreweries(data);
+      return setBreweries(finalData);
     };
     getMatchingBrewery();
   }, [toggle]);

@@ -17,15 +17,11 @@ export const Home = () => {
 
   useEffect(() => {
     const dataGet = async () => {
-      const data = await axios
-        .get(
-          `https://api.openbrewerydb.org/v1/breweries?page=${page}&per_page=20`
-        )
-        .then((response) => response.data)
-        .catch((err) => {
-          throw new Error("Axios get failed!");
-        });
-      return setBreweries(data);
+      const data = await axios.get(
+        `https://api.openbrewerydb.org/v1/breweries?page=${page}&per_page=20`
+      );
+      const finalData = data.data;
+      return setBreweries(finalData);
     };
     dataGet();
   });
