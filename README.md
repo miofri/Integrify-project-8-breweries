@@ -1,7 +1,7 @@
 
 # Breweries App
 
-Live at [sk-brewery.vercel.app](sk-brewery.vercel.app)
+Live at [sk-brewery.vercel.app](https://sk-brewery.vercel.app)
 Objective: Fetch, display, and search for brewery companies from the given API endpoint, using React and TypeScript
 
 ## Directories:
